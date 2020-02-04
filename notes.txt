@@ -1,0 +1,3 @@
+php index.php --version=Omni_2.0.0 --rebuild=1 --server=mentor
+php index.php --version=MEIF_1.4.0 --rebuild=1 --server=mentor
+php index.php --version=IOS2.0 --rebuild=1 --server=atlassian
