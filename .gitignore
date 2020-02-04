@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/cache
 credentials
 .env
 .env.backup

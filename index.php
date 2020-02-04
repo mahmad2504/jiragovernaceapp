@@ -5,10 +5,8 @@ include_once "credentials";
 use mahmad\JiraGovernace\Jira;
 
 use CliArgs\CliArgs;
-$config=[
-	'user'=>$user,
-	'pass'=>$pass,
-	'version'=> 'none'];
+
+
 
 $CliArgs = new CliArgs(
 [
@@ -17,16 +15,34 @@ $CliArgs = new CliArgs(
 	],
 	'version' => [
 		'default' => 'none',
+	],
+	'server' => [
+		'default' => 'mentor',
 	]
 ]);
-$config['rebuild'] =  $CliArgs->getArg('rebuild'); 
-$config['version'] = $CliArgs->getArg('version'); 
 
-if($config['version'] == 'none')
+if($CliArgs->getArg('version') == 'none')
 {
 	echo "Version name is missing\n";
 	exit();
 }
-new Jira($config);
+
+if(($CliArgs->getArg('server') == 'mentor')&&($CliArgs->getArg('server') == 'atlassian'))
+{
+	echo "Invalid server name [mentor|atlassian]\n";
+	exit();
+}
+if($CliArgs->getArg('server') == 'mentor')
+{
+	$config_mentor['rebuild'] =  $CliArgs->getArg('rebuild'); 
+	$config_mentor['version'] = $CliArgs->getArg('version'); 
+	new Jira($config_mentor);
+}
+else
+{
+	$config_atlassian['rebuild'] =  $CliArgs->getArg('rebuild'); 
+	$config_atlassian['version'] = $CliArgs->getArg('version'); 
+	new Jira($config_atlassian);
+}
 
 //echo $greeting->greet("Hello Composer");
