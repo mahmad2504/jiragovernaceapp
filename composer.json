@@ -1,5 +1,5 @@
 {
     "require": {
-        "mahmad2504/jiragovernace": "^2.0"
+        "mahmad2504/jiragovernace": "^latest"
     }
 }
